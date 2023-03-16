@@ -37,13 +37,12 @@
                         <td>{{ $item->student_name }}</td>
                         <td>{{ $item->student_email }}</td>
                         <td>{{ $item->student_gender }}</td>
-                        <td>
-                            <form method="post" action="{{url('delete/'.$item->id)}}">
+                        <td>                          
+                            <a href="{{url('view-student/'.$item->id)}}" class="btn btn-primary btn-sm">View</a>
+                            <a href="{{url('edit-student/'.$item->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <form method="post" action="{{url('delete-student/'.$item->id)}}" style="display: inline">
                                 @csrf
-                                @method('DELETE')
-                                <a href="{{url('view-student/'.$item->id)}}" class="btn btn-primary btn-sm">View</a>
-                                <a href="" class="btn btn-warning btn-sm">Edit</a>
-                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                <button class="btn btn-danger btn-sm">Delete</button>
                             </form>
 
                         </td>

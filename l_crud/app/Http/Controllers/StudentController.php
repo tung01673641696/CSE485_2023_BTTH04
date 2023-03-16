@@ -23,7 +23,6 @@ class StudentController extends Controller
     }
 
     public function saveStudent(Request $request) {
-        Log::info("hahaha");
         
         $studentName = $request->student_name;
         
@@ -42,7 +41,30 @@ class StudentController extends Controller
         return redirect('/');
     }
 
-    public function delete($id) {
-        
+    public function editStudent($id) {
+        $student = Student::where('id',$id)->first();
+        return view('edit',compact('student'));
+    }
+
+    public function updateStudent(Request $request, $id) {
+        $student = Student::where('id',$id)->first();
+        $studentName = $request -> student_name;
+        $studentEmail = $request -> student_email;
+        $studentGender = $request -> student_gender;
+        $studentImage = $request -> student_image;
+
+        $student->student_name = $studentName;
+        $student->student_email = $studentEmail;
+        $student->student_gender = $studentGender;
+        $student->student_image = $studentImage;
+
+        $student->save();
+        return redirect('/');
+    }
+
+    public function deleteStudent($id) {
+        $student = Student::where('id',$id)->first();
+        $student -> delete();
+        return redirect('/');
     }
 }

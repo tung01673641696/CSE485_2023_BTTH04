@@ -20,6 +20,9 @@ Route::get('view-student/{id}', [StudentController::class, 'viewStudent']);
 Route::get('create-student', [StudentController::class, 'createStudent']);
 Route::post('save-student', [StudentController::class, 'saveStudent']);
 
+Route::get('edit-student/{id}', [StudentController::class, 'editStudent']);
+Route::post('update-student/{id}', [StudentController::class, 'updateStudent']);
+
 Route::post('delete-student/{id}', [StudentController::class, 'deleteStudent']);
 
 
